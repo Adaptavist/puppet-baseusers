@@ -1,5 +1,5 @@
 # BaseUsers Module
-
+[![Build Status](https://travis-ci.org/Adaptavist/puppet-baseusers.svg?branch=master)](https://travis-ci.org/Adaptavist/puppet-baseusers)
 ## Overview
 
 The **BaseUsers** module provisions machines with a set of local accounts configurable via Hiera.
