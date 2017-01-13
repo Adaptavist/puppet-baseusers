@@ -1,7 +1,8 @@
 require 'rubygems'
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet-lint'
-# PuppetLint.configuration.send("disable_80chars")
-# PuppetLint.configuration.send('disable_class_inherits_from_params_class')
+require 'puppet-syntax/tasks/puppet-syntax'
 
-task :default => [:spec, :lint]
+PuppetLint.configuration.send('disable_quoted_booleans')
+ENV['STRICT_VARIABLES']='no'
+task :default => [:spec, :lint, :syntax]
