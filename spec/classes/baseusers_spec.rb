@@ -36,17 +36,20 @@ describe 'baseusers', :type => 'class' do
         }
       }}
   
-    it do
+    it {
       should contain_user('hosting').with_ensure('present').with(
-          'name' => 'hosting',
-          'home' => '/home/hosting',
-          'shell' => '/bin/bash',
-          'uid'  => '1010',
-          'gid'  => '1010',
-          'comment' => 'Hosting User',
-          'password' => '*',
-          'managehome' => true,
-        )
+        'name' => 'hosting',
+        'home' => '/home/hosting',
+        'shell' => '/bin/bash',
+        'uid'  => '1010',
+        'gid'  => '1010',
+        'comment' => 'Hosting User',
+        'password' => '*',
+        'managehome' => true,
+      )
+    }      
+    
+    it {
       should contain_user('user').with_ensure('present').with(
         'name' => 'user',
           'home' => '/home/user',
@@ -57,15 +60,21 @@ describe 'baseusers', :type => 'class' do
           'password' => '*',
           'managehome' => true,
         )
-        should contain_group('admin').with_ensure('present').with(
-          'name' => 'admin',
-          'gid'  => '109'
-        )
-        should contain_group('hosting').with_ensure('present').with(
-          'name' => 'hosting',
-          'gid'  => '1010'
-        )
-    end
+    }
+
+    it {
+      should contain_group('admin').with_ensure('present').with(
+        'name' => 'admin',
+        'gid'  => '109'
+      )
+    }    
+    
+    it{
+      should contain_group('hosting').with_ensure('present').with(
+        'name' => 'hosting',
+        'gid'  => '1010'
+      )
+    }
     
   end
 end
